@@ -1,5 +1,12 @@
+import GlobalStyle from "./GlobalStyle";
+
 function App() {
-  return <></>;
+  return (
+    <>
+      <GlobalStyle />
+      <div>안녕</div>
+    </>
+  );
 }
 
 export default App;
