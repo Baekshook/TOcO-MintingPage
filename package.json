@@ -38,6 +38,7 @@
     ]
   },
   "devDependencies": {
+    "babel-plugin-styled-components": "^2.0.7",
     "customize-cra": "^1.0.0",
     "msw": "^0.47.4",
     "react-app-rewired": "^2.2.1"
