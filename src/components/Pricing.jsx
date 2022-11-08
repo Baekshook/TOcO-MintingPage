@@ -6,12 +6,13 @@ import {
   Text,
   VStack,
   useColorModeValue,
-  List,
-  ListItem,
-  ListIcon,
   Button,
+  Image,
 } from "@chakra-ui/react";
-import { FaCheckCircle } from "react-icons/fa";
+
+import keyImage from "@assets/key.png";
+import diaryImage from "@assets/diary.png";
+import nftImage from "@assets/nft.png";
 
 function PriceWrapper({ children }) {
   return (
@@ -19,7 +20,7 @@ function PriceWrapper({ children }) {
       mb={4}
       shadow="base"
       borderWidth="1px"
-      alignSelf={{ base: "center", lg: "flex-start" }}
+      alignSelf={"center"}
       borderColor={useColorModeValue("gray.200", "gray.500")}
       borderRadius={"xl"}
     >
@@ -32,67 +33,48 @@ export default function ThreeTierPricing() {
   return (
     <Box py={12}>
       <VStack spacing={2} textAlign="center">
-        <Heading as="h1" fontSize="4xl">
-          Plans that fit your need
+        <Heading as="h1" fontSize="4xl" fontFamily={"SEBANG_Gothic_Bold"}>
+          당신만의 비밀 NFT를 만들고 보관하세요
         </Heading>
         <Text fontSize="lg" color={"gray.500"}>
-          Start with 14-day free trial. No credit card needed. Cancel at
-          anytime.
+          당신의 NFT를 보유한 사람만 비밀을 알 수 있습니다.
         </Text>
       </VStack>
       <Stack
         direction={{ base: "column", md: "row" }}
         textAlign="center"
         justify="center"
-        spacing={{ base: 4, lg: 10 }}
+        spacing={10}
         py={10}
       >
         <PriceWrapper>
-          <Box py={4} px={12}>
-            <Text fontWeight="500" fontSize="2xl">
-              Hobby
-            </Text>
-            <HStack justifyContent="center">
-              <Text fontSize="3xl" fontWeight="600">
-                $
+          <Box position="relative" w={{ base: "520px", md: 240 }}>
+            <Box py={4} px={12} fontFamily={"SEBANG_Gothic_Bold"}>
+              <Text fontWeight="500" fontSize="2xl">
+                기본
               </Text>
-              <Text fontSize="5xl" fontWeight="900">
-                79
-              </Text>
-              <Text fontSize="3xl" color="gray.500">
-                /month
-              </Text>
-            </HStack>
-          </Box>
-          <VStack
-            bg={useColorModeValue("gray.50", "gray.700")}
-            py={4}
-            borderBottomRadius={"xl"}
-          >
-            <List spacing={3} textAlign="start" px={12}>
-              <ListItem>
-                <ListIcon as={FaCheckCircle} color="green.500" />
-                unlimited build minutes
-              </ListItem>
-              <ListItem>
-                <ListIcon as={FaCheckCircle} color="green.500" />
-                Lorem, ipsum dolor.
-              </ListItem>
-              <ListItem>
-                <ListIcon as={FaCheckCircle} color="green.500" />
-                5TB Lorem, ipsum dolor.
-              </ListItem>
-            </List>
-            <Box w="80%" pt={7}>
-              <Button w="full" colorScheme="red" variant="outline">
-                Start trial
-              </Button>
+              <HStack justifyContent="center">
+                <Text fontSize="3xl" fontWeight="600">
+                  eth
+                </Text>
+                <Text fontSize="5xl" fontWeight="900">
+                  1
+                </Text>
+              </HStack>
             </Box>
-          </VStack>
+            <VStack py={4} borderBottomRadius={"xl"}>
+              <Image src={nftImage} w={100} />
+              <Box w="80%" pt={7}>
+                <Button w="full" colorScheme="purple" variant={"outline"}>
+                  민팅 하러가기
+                </Button>
+              </Box>
+            </VStack>
+          </Box>
         </PriceWrapper>
 
         <PriceWrapper>
-          <Box position="relative">
+          <Box position="relative" w={{ base: "520px", md: 280 }}>
             <Box
               position="absolute"
               top="-16px"
@@ -101,110 +83,65 @@ export default function ThreeTierPricing() {
             >
               <Text
                 textTransform="uppercase"
-                bg={useColorModeValue("red.300", "red.700")}
+                bg={"purple.600"}
+                fontFamily={"SEBANG_Gothic_Bold"}
                 px={3}
                 py={1}
-                color={useColorModeValue("gray.900", "gray.300")}
+                color={"white"}
                 fontSize="sm"
                 fontWeight="600"
                 rounded="xl"
               >
-                Most Popular
+                가장 인기있는
               </Text>
             </Box>
-            <Box py={4} px={12}>
+            <Box py={4} px={12} fontFamily={"SEBANG_Gothic_Bold"}>
               <Text fontWeight="500" fontSize="2xl">
-                Growth
+                프리미엄
               </Text>
               <HStack justifyContent="center">
                 <Text fontSize="3xl" fontWeight="600">
-                  $
+                  eth
                 </Text>
                 <Text fontSize="5xl" fontWeight="900">
-                  149
-                </Text>
-                <Text fontSize="3xl" color="gray.500">
-                  /month
+                  2
                 </Text>
               </HStack>
             </Box>
-            <VStack
-              bg={useColorModeValue("gray.50", "gray.700")}
-              py={4}
-              borderBottomRadius={"xl"}
-            >
-              <List spacing={3} textAlign="start" px={12}>
-                <ListItem>
-                  <ListIcon as={FaCheckCircle} color="green.500" />
-                  unlimited build minutes
-                </ListItem>
-                <ListItem>
-                  <ListIcon as={FaCheckCircle} color="green.500" />
-                  Lorem, ipsum dolor.
-                </ListItem>
-                <ListItem>
-                  <ListIcon as={FaCheckCircle} color="green.500" />
-                  5TB Lorem, ipsum dolor.
-                </ListItem>
-                <ListItem>
-                  <ListIcon as={FaCheckCircle} color="green.500" />
-                  5TB Lorem, ipsum dolor.
-                </ListItem>
-                <ListItem>
-                  <ListIcon as={FaCheckCircle} color="green.500" />
-                  5TB Lorem, ipsum dolor.
-                </ListItem>
-              </List>
+            <VStack py={4} borderBottomRadius={"xl"}>
+              <Image src={keyImage} w={132} />
               <Box w="80%" pt={7}>
-                <Button w="full" colorScheme="red">
-                  Start trial
+                <Button w="full" colorScheme="purple">
+                  민팅 하러가기
                 </Button>
               </Box>
             </VStack>
           </Box>
         </PriceWrapper>
         <PriceWrapper>
-          <Box py={4} px={12}>
-            <Text fontWeight="500" fontSize="2xl">
-              Scale
-            </Text>
-            <HStack justifyContent="center">
-              <Text fontSize="3xl" fontWeight="600">
-                $
+          <Box position="relative" w={{ base: "520px", md: 240 }}>
+            <Box py={4} px={12} fontFamily={"SEBANG_Gothic_Bold"}>
+              <Text fontWeight="500" fontSize="2xl">
+                울트라
               </Text>
-              <Text fontSize="5xl" fontWeight="900">
-                349
-              </Text>
-              <Text fontSize="3xl" color="gray.500">
-                /month
-              </Text>
-            </HStack>
-          </Box>
-          <VStack
-            bg={useColorModeValue("gray.50", "gray.700")}
-            py={4}
-            borderBottomRadius={"xl"}
-          >
-            <List spacing={3} textAlign="start" px={12}>
-              <ListItem>
-                <ListIcon as={FaCheckCircle} color="green.500" />
-                unlimited build minutes
-              </ListItem>
-              <ListItem>
-                <ListIcon as={FaCheckCircle} color="green.500" />
-                Lorem, ipsum dolor.
-              </ListItem>
-              <ListItem>
-                <ListIcon as={FaCheckCircle} color="green.500" />
-                5TB Lorem, ipsum dolor.
-              </ListItem>
-            </List>
-            <Box w="80%" pt={7}>
-              <Button w="full" colorScheme="red" variant="outline">
-                Start trial
-              </Button>
+              <HStack justifyContent="center">
+                <Text fontSize="3xl" fontWeight="600">
+                  eth
+                </Text>
+                <Text fontSize="5xl" fontWeight="900">
+                  3
+                </Text>
+              </HStack>
             </Box>
-          </VStack>
+            <VStack py={4} borderBottomRadius={"xl"}>
+              <Image src={diaryImage} w={100} />
+              <Box w="80%" pt={7}>
+                <Button w="full" colorScheme="purple" variant={"outline"}>
+                  민팅 하러가기
+                </Button>
+              </Box>
+            </VStack>
+          </Box>
         </PriceWrapper>
       </Stack>
     </Box>
