@@ -9,7 +9,7 @@ import {
   Box,
 } from "@chakra-ui/react";
 
-import lockedImage from "@assets/locked.png";
+import cardImage from "@assets/card.png";
 
 export default function CallToActionWithIllustration() {
   return (
@@ -24,55 +24,60 @@ export default function CallToActionWithIllustration() {
           fontWeight={600}
           fontSize={{ base: "3xl", sm: "4xl", md: "6xl" }}
           lineHeight={"110%"}
+          fontFamily={"SEBANG_Gothic_Bold"}
         >
-          당신의{" "}
+          T
           <Text as={"spam"} color={"purple.400"}>
-            비
+            O
           </Text>
-          밀을&nbsp;
+          c
           <Text as={"spam"} color={"purple.400"}>
-            담
+            O{" "}
           </Text>
-          아주세요
+          <Text as={"spam"} color={"pink.400"}>
+            NFT
+          </Text>
         </Heading>
-        <Text lineHeight={"120%"} maxW={"3xl"}>
-          당신의 비밀을 영원히 안전하게 보관해 주는 서비스 비담입니다.
-          <br />
-          블록체인 기술을 활용해 당신의 비밀을 어느 누구도 확인할 수 없습니다.
-          <br />
-          또한 당신의 비밀을 어느 누구도 삭제할 수 없습니다.
-          <br />
-          오로지 당신만 확인할 수 있고 간직할 수 있습니다.
-        </Text>
-        <Stack spacing={6} direction={"row"}>
-          <Button
-            rounded={"full"}
-            px={6}
-            bg={"purple.400"}
-            _hover={{ bg: "purple.600" }}
-          >
-            비담 시작하기
-          </Button>
-          <Button
-            rounded={"full"}
-            px={6}
-            bg={"gray.400"}
-            _hover={{ bg: "gray.600" }}
-          >
-            비담 알아보기
-          </Button>
-        </Stack>
         <Flex w={"full"} align={"center"} justify={"center"} pos={"relative"}>
-          <Image src={lockedImage} h={"80px"} />
+          <Image src={cardImage} h={"300px"} />
           <Box
-            w={"80px"}
-            h={"80px"}
-            bg={"linear-gradient(160deg, #0093E9 0%, #80D0C7 50%)"}
+            w={"400px"}
+            h={"400px"}
+            bg={"linear-gradient(160deg, #21D4FD 0%, #B721FF 100%)"}
             pos={"absolute"}
             zIndex={-3}
             filter={"blur(70px)"}
           />
         </Flex>
+        <Text
+          fontWeight={400}
+          fontSize={{ base: "2xl", sm: "2xl", md: "3xl" }}
+          fontFamily={"SEBANG_Gothic_Bold"}
+          lineHeight={"159%"}
+          mt={"200px"}
+        >
+          1 / 50
+          <br />
+          50 klay each
+        </Text>
+        <Stack spacing={6} direction={"row"}>
+          <Button
+            rounded={"full"}
+            px={8}
+            py={8}
+            bg={"red.400"}
+            _hover={{ bg: "red.600" }}
+            fontSize={{ base: "4xl", sm: "4xl", md: "4xl" }}
+            fontFamily={"SEBANG_Gothic_Bold"}
+          >
+            MINT
+          </Button>
+        </Stack>
+        <Text lineHeight={"200%"} maxW={"3xl"} fontSize={{ base: "2xl" }}>
+          max supply : 50
+          <br />
+          Connect to the Klaytn Mainnet
+        </Text>
       </Stack>
     </Container>
   );

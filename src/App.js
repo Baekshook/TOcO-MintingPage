@@ -1,13 +1,7 @@
-import {
-  ChakraProvider,
-} from "@chakra-ui/react";
+import { ChakraProvider } from "@chakra-ui/react";
 import Hero from "@components/Hero";
-import NavBar from "@components/NavBar";
-import Features from "@components/Features";
-import Statistics from "@components/Statistics";
-import HeroTwo from "@components/HeroTwo";
 import Footer from "@components/Footer";
-import ThreeTierPricing from "@components/Pricing";
+import NavBar from "@components/NavBar";
 import theme from "./theme";
 import "@fontsource/nanum-gothic";
 import Fonts from "./font";
@@ -18,10 +12,10 @@ function App() {
       <Fonts />
       <NavBar />
       <Hero />
-      <Features />
-      <Statistics />
-      <ThreeTierPricing />
-      <HeroTwo />
+      <br />
+      <br />
+      <br />
+      <br />
       <Footer />
     </ChakraProvider>
   );
