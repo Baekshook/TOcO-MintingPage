@@ -3,7 +3,6 @@ import {
   Flex,
   Text,
   IconButton,
-  Image,
   Button,
   Stack,
   Collapse,
@@ -13,7 +12,6 @@ import {
 import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
 import useAuth from "@hooks/useAuth";
 import { toast } from "react-toastify";
-import kaikasImageUrl from "@assets/kaikas.png";
 import Wallet from "@components/Wallet";
 
 export default function WithSubNavigation() {
@@ -116,11 +114,11 @@ export default function WithSubNavigation() {
             fontFamily={"SEBANG_Gothic_Bold"}
           >
             T
-            <Text as={"spam"} color={"purple.400"}>
+            <Text as={"span"} color={"purple.400"}>
               O
             </Text>
             c
-            <Text as={"spam"} color={"purple.400"}>
+            <Text as={"span"} color={"purple.400"}>
               O{" "}
             </Text>
           </Text>
@@ -140,15 +138,14 @@ export default function WithSubNavigation() {
             href={"#"}
             _hover={{
               bg: "purple.300",
-              cursor: "pointer"
+              cursor: "pointer",
             }}
             onClick={user ? handleDone : handleLogin}
           >
-            {user ? <Wallet src={kaikasImageUrl} /> : <Wallet />}
+            <Wallet />
           </Button>
         </Stack>
       </Flex>
-
       <Collapse in={isOpen} animateOpacity></Collapse>
     </Box>
   );

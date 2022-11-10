@@ -27,14 +27,14 @@ export default function CallToActionWithIllustration() {
           fontFamily={"SEBANG_Gothic_Bold"}
         >
           T
-          <Text as={"spam"} color={"purple.400"}>
+          <Text as={"span"} color={"purple.400"}>
             O
           </Text>
           c
-          <Text as={"spam"} color={"purple.400"}>
+          <Text as={"span"} color={"purple.400"}>
             O{" "}
           </Text>
-          <Text as={"spam"} color={"pink.400"}>
+          <Text as={"span"} color={"pink.400"}>
             NFT
           </Text>
         </Heading>
