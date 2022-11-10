@@ -3,22 +3,78 @@ import {
   Flex,
   Text,
   IconButton,
+  Image,
   Button,
   Stack,
   Collapse,
   useBreakpointValue,
   useDisclosure,
 } from "@chakra-ui/react";
-import {
-  HamburgerIcon,
-  CloseIcon,
+import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
+import useAuth from "@hooks/useAuth";
+import { toast } from "react-toastify";
+import kaikasImageUrl from "@assets/kaikas.png";
+import Wallet from "@components/Wallet";
 
-} from "@chakra-ui/icons";
-
-
-export default function WithSubnavigation() {
+export default function WithSubNavigation() {
   const { isOpen, onToggle } = useDisclosure();
-  
+  const klaytn = window.klaytn;
+
+  const { user, setUser } = useAuth();
+  async function loginWithKaikas() {
+    if (!klaytn) {
+      toast.error("kaikas 설치 해주세요!", {
+        position: toast.POSITION.TOP_CENTER,
+      });
+      return;
+    }
+
+    try {
+      const accounts = await toast.promise(
+        klaytn.enable(),
+        {
+          pending: "Kaikas 지갑 연동 중",
+        },
+        { closeButton: true }
+      );
+      setUser(accounts[0]);
+      localStorage.setItem("_user", accounts[0]);
+      toast.success(`${accounts[0].slice(0, 13)}...님 환영합니다~ ^^`);
+    } catch {
+      toast.error("로그인 실패..! 다시 시도해주세요~^^");
+    }
+  }
+
+  function handleLogin() {
+    loginWithKaikas();
+  }
+
+  async function handleDone() {
+    const isAvailable = await isKaikasAvailable();
+    if (isAvailable) {
+      toast.success("엇 ..또 로그인 하실려구요?!");
+      return;
+    }
+
+    toast.warn("다시 로그인 해주세요 ^^!");
+    setUser("");
+    localStorage.removeItem("_user");
+  }
+
+  async function isKaikasAvailable() {
+    const klaytn = window?.klaytn;
+    if (!klaytn) {
+      return false;
+    }
+
+    const results = await Promise.all([
+      klaytn._kaikas.isApproved(),
+      klaytn._kaikas.isEnabled(),
+      klaytn._kaikas.isUnlocked(),
+    ]);
+
+    return results.every((res) => res);
+  }
 
   return (
     <Box pos={"fixed"} top={0} w={"100%"} zIndex={999}>
@@ -84,9 +140,11 @@ export default function WithSubnavigation() {
             href={"#"}
             _hover={{
               bg: "purple.300",
+              cursor: "pointer"
             }}
+            onClick={user ? handleDone : handleLogin}
           >
-            Connect Wallet
+            {user ? <Wallet src={kaikasImageUrl} /> : <Wallet />}
           </Button>
         </Stack>
       </Flex>
