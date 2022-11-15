@@ -12,6 +12,8 @@ import cardImage from "@assets/card.png";
 
 export default function CallToActionWithIllustration() {
 
+  const myAddress = window.klaytn?.selectedAddress;
+
   const onClickMintButton = async () => {
     const accounts = await window.klaytn.enable();
     const account = accounts[0];
@@ -22,8 +24,11 @@ export default function CallToActionWithIllustration() {
       alert("Warning! It is not Baobab network");
       return;
     }
+
+    const mintContract = "0x1b7967c073cc5d2b7b2a1728fbd737b567cd533f";
+
     const transactionParameters = {
-      to: "0x1b7967c073cc5d2b7b2a1728fbd737b567cd533f",
+      to: mintContract,
       from: account,
       data: "0xa0712d680000000000000000000000000000000000000000000000000000000000000001",
       value: "0xB1A2BC2EC50000", //0.05 klay 단위는 klay의 가장 작은 단위 peb, 1klay = 1,000,000,000,000,000,000 peb
@@ -35,6 +40,10 @@ export default function CallToActionWithIllustration() {
         method: "klay_sendTransaction",
         params: [transactionParameters],
         from: account,
+      },
+      (receipt, result) => {
+        console.log(receipt);
+        console.log(result);
       }
     );
   };
@@ -77,18 +86,21 @@ export default function CallToActionWithIllustration() {
           />
         </Flex>
         <Text
-          fontWeight={400}
+          fontWeight={100}
           fontSize={{ base: "2xl", sm: "2xl", md: "3xl" }}
           fontFamily={"SEBANG_Gothic_Bold"}
-          lineHeight={"159%"}
-          mt={"200px"}
+          lineHeight={"140%"}
         >
           1 / 50
           <br />
           50 klay each
         </Text>
+        <Text fontSize={"18px"} lineHeight={"50%"} margin={"100px"}>
+          Your Address : {myAddress}{" "}
+        </Text>
         <Stack spacing={6} direction={"row"}>
           <Button
+            marginTop={"-20px"}
             rounded={"full"}
             px={8}
             py={8}
