@@ -11,7 +11,6 @@ import {
 import cardImage from "@assets/card.png";
 
 export default function CallToActionWithIllustration() {
-
   const myAddress = window.klaytn?.selectedAddress;
 
   const onClickMintButton = async () => {
@@ -96,7 +95,7 @@ export default function CallToActionWithIllustration() {
           50 klay each
         </Text>
         <Text fontSize={"18px"} lineHeight={"50%"} margin={"100px"}>
-          Your Address : {myAddress}{" "}
+          Your Address : {myAddress}
         </Text>
         <Stack spacing={6} direction={"row"}>
           <Button
