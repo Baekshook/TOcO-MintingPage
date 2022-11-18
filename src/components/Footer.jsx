@@ -8,7 +8,6 @@ import {
   VisuallyHidden,
 } from "@chakra-ui/react";
 import { FaDiscord, FaTwitter, FaGithub } from "react-icons/fa";
-import { ReactNode } from "react";
 
 const SocialButton = ({ children, label, href }) => {
   return (

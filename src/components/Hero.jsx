@@ -11,15 +11,16 @@ import {
 import cardImage from "@assets/card.png";
 
 export default function CallToActionWithIllustration() {
-  const myAddress = window.klaytn?.selectedAddress;
+  const myAddress = window.ethereum?.selectedAddress;
 
   const onClickMintButton = async () => {
-    const accounts = await window.klaytn.enable();
+    const accounts = await window.ethereum.enable();
     const account = accounts[0];
-    console.log(window.klaytn.networkVersion);
-    if (window.klaytn.networkVersion !== 1001) {
+    console.log(window.ethereum.networkVersion);
+    if (window.ethereum.networkVersion !== 5) {
       // 8217 mainnet
       // 1001 testnet
+      // 1 mainnet, 5 Goerli Test Network
       alert("Warning! It is not Baobab network");
       return;
     }
@@ -34,7 +35,7 @@ export default function CallToActionWithIllustration() {
       gas: "0x3476A", //무한 루프를 방지하기 위한 코드 실행의 최대 가스 허용량.
     };
 
-    window.klaytn.sendAsync(
+    window.ethereum.sendAsync(
       {
         method: "klay_sendTransaction",
         params: [transactionParameters],

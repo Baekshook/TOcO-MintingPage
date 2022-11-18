@@ -9,33 +9,33 @@ import { toast } from "react-toastify";
 import { useEffect } from "react";
 import useAuth from "@hooks/useAuth";
 
-const klaytn = window.klaytn;
+const ethereum = window.ethereum;
 
 function App() {
   const { user, setUser } = useAuth();
   useEffect(() => {
     // 지갑 없을 시 이 effect 무효!
-    if (!klaytn) {
+    if (!ethereum) {
       return;
     }
 
     const account = localStorage.getItem("_user");
-    const currentKaikasAccount = klaytn?.selectedAddress;
+    const currentMetamaskAccount = ethereum?.selectedAddress;
 
-    if (!account || !currentKaikasAccount) {
+    if (!account || !currentMetamaskAccount) {
       setUser("");
       localStorage.removeItem("_user");
       return;
     }
 
-    if (account === currentKaikasAccount) {
+    if (account === currentMetamaskAccount) {
       setUser(account);
       localStorage.setItem("_user", account);
     }
   }, [setUser]);
 
   useEffect(() => {
-    if (!klaytn) {
+    if (!ethereum) {
       return;
     }
 
@@ -43,7 +43,7 @@ function App() {
       if (!user) {
         return;
       }
-      const changedAccount = klaytn?.selectedAddress;
+      const changedAccount = ethereum?.selectedAddress;
       if (user !== changedAccount) {
         toast.success(
           `${changedAccount.slice(0, 5)}...   계정이 바뀌셨군요 ㅎㅎ!!`
@@ -53,20 +53,22 @@ function App() {
       }
     };
 
-    klaytn?.on("accountsChanged", handleChangeAccounts);
+    ethereum.on("accountsChanged", handleChangeAccounts);
     return () => {
-      klaytn.off("accountsChanged", handleChangeAccounts);
+      ethereum.removeListener("accountsChanged", handleChangeAccounts); //klaytn이면 klaytn.off도 가능
     };
   }, [user, setUser]);
 
   useEffect(() => {
-    if (!klaytn) {
+    if (!ethereum) {
       return;
     }
 
     const networkObj = {
-      1001: "바오밥 테스트넷",
-      8217: "메인넷",
+      // 1001: "바오밥 테스트넷",
+      // 8217: "메인넷",
+      1: "메인넷",
+      5: "테스트넷",
     };
 
     const handleNetworkChanged = () => {
@@ -74,14 +76,14 @@ function App() {
       localStorage.removeItem("_user");
       toast.warn(
         `네트워크가 ${
-          networkObj[klaytn.networkVersion]
+          networkObj[ethereum.networkVersion]
         }으로 바뀌었군요! 다시 로그인 해주세요~`
       );
     };
 
-    klaytn?.on("networkChanged", handleNetworkChanged);
+    ethereum?.on("networkChanged", handleNetworkChanged);
     return () => {
-      klaytn?.removeListener("networkChanged", handleNetworkChanged);
+      ethereum?.removeListener("networkChanged", handleNetworkChanged);
     };
   }, [setUser]);
 

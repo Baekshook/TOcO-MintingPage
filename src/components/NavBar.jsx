@@ -16,11 +16,11 @@ import Wallet from "@components/Wallet";
 
 export default function WithSubNavigation() {
   const { isOpen, onToggle } = useDisclosure();
-  const klaytn = window.klaytn;
+  const ethereum = window.ethereum;
 
   const { user, setUser } = useAuth();
-  async function loginWithKaikas() {
-    if (!klaytn) {
+  async function loginWithMetamask() {
+    if (!ethereum) {
       toast.error("kaikas 설치 해주세요!", {
         position: toast.POSITION.TOP_CENTER,
       });
@@ -29,7 +29,7 @@ export default function WithSubNavigation() {
 
     try {
       const accounts = await toast.promise(
-        klaytn.enable(),
+        ethereum.enable(),
         {
           pending: "Kaikas 지갑 연동 중",
         },
@@ -44,11 +44,11 @@ export default function WithSubNavigation() {
   }
 
   function handleLogin() {
-    loginWithKaikas();
+    loginWithMetamask();
   }
 
   async function handleDone() {
-    const isAvailable = await isKaikasAvailable();
+    const isAvailable = await isMetamaskAvailable();
     if (isAvailable) {
       toast.success("엇 ..또 로그인 하실려구요?!");
       return;
@@ -59,16 +59,16 @@ export default function WithSubNavigation() {
     localStorage.removeItem("_user");
   }
 
-  async function isKaikasAvailable() {
-    const klaytn = window?.klaytn;
-    if (!klaytn) {
+  async function isMetamaskAvailable() {
+    const ethereum = window?.ethereum;
+    if (!ethereum) {
       return false;
     }
 
     const results = await Promise.all([
-      klaytn._kaikas.isApproved(),
-      klaytn._kaikas.isEnabled(),
-      klaytn._kaikas.isUnlocked(),
+      ethereum._metamask.isApproved(),
+      ethereum._metamask.isEnabled(),
+      ethereum._metamask.isUnlocked(),
     ]);
 
     return results.every((res) => res);
