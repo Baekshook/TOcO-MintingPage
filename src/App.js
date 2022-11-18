@@ -67,8 +67,8 @@ function App() {
     const networkObj = {
       // 1001: "바오밥 테스트넷",
       // 8217: "메인넷",
-      1: "메인넷",
-      5: "테스트넷",
+      5: "메인넷",
+      1: "테스트넷",
     };
 
     const handleNetworkChanged = () => {
