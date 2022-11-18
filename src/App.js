@@ -81,9 +81,9 @@ function App() {
       );
     };
 
-    ethereum?.on("networkChanged", handleNetworkChanged);
+    ethereum?.on("chainChanged", handleNetworkChanged);
     return () => {
-      ethereum?.removeListener("networkChanged", handleNetworkChanged);
+      ethereum?.removeListener("chainChanged", handleNetworkChanged);
     };
   }, [setUser]);
 
