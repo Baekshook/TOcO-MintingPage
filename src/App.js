@@ -67,17 +67,16 @@ function App() {
     const networkObj = {
       // 1001: "바오밥 테스트넷",
       // 8217: "메인넷",
-      5: "메인넷",
-      1: "테스트넷",
+      5: "테스트넷",
+      1: "메인넷",
     };
 
-    const handleNetworkChanged = () => {
+    const handleNetworkChanged = async () => {
+      const networkDecimal = await ethereum.request({ method: "net_version" });
       setUser("");
       localStorage.removeItem("_user");
       toast.warn(
-        `네트워크가 ${
-          networkObj[ethereum.networkVersion]
-        }으로 바뀌었군요! 다시 로그인 해주세요~`
+        `네트워크가 ${networkObj[networkDecimal]}으로 바뀌었군요! 다시 로그인 해주세요~`
       );
     };
 

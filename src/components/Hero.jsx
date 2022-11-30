@@ -9,6 +9,7 @@ import {
   Box,
 } from "@chakra-ui/react";
 import cardImage from "@assets/card.png";
+import styled, { keyframes } from "styled-components";
 
 export default function CallToActionWithIllustration() {
   const myAddress = window.ethereum?.selectedAddress;
@@ -16,14 +17,14 @@ export default function CallToActionWithIllustration() {
   const onClickMintButton = async () => {
     const accounts = await window.ethereum.enable();
     const account = accounts[0];
-    // console.log(window.ethereum.networkVersion);
-    // if (window.ethereum.networkVersion !== 5) {
-    //   // 8217 mainnet
-    //   // 1001 testnet
-    //   // 1 mainnet, 5 Goerli Test Network
-    //   alert("Warning! It is not Baobab network");
-    //   return;
-    // }
+    console.log(window.ethereum.networkVersion);
+    if (window.ethereum.networkVersion !== "5") {
+      // 8217 mainnet
+      // 1001 testnet
+      // 1 mainnet, 5 Goerli Test Network
+      alert("Warning! It is not Goerli network");
+      return;
+    }
 
     const mintContract = "0xC5E7a7b8f66C74609E95A8f17d6677BaD41AF249";
 
@@ -73,6 +74,7 @@ export default function CallToActionWithIllustration() {
           <Text as={"span"} color={"pink.400"}>
             NFT
           </Text>
+          {/* <GradientSectionTitle>NFT</GradientSectionTitle> */}
         </Heading>
         <Flex w={"full"} align={"center"} justify={"center"} pos={"relative"}>
           <Image src={cardImage} h={"300px"} />
@@ -91,12 +93,14 @@ export default function CallToActionWithIllustration() {
           fontFamily={"SEBANG_Gothic_Bold"}
           lineHeight={"140%"}
         >
-          1 / 50
+          47 / 50
           <br />
-          50 klay each
+          0.01 ETH each
         </Text>
         <Text fontSize={"18px"} lineHeight={"50%"} margin={"100px"}>
           Your Address : {myAddress}
+          {/* Balance : {myBalbance} */}
+          <br />
         </Text>
         <Stack spacing={6} direction={"row"}>
           <Button
@@ -116,7 +120,7 @@ export default function CallToActionWithIllustration() {
         <Text lineHeight={"200%"} maxW={"3xl"} fontSize={{ base: "2xl" }}>
           max supply : 50
           <br />
-          Connect to the Klaytn Mainnet
+          Connect to the Ethereum Mainnet
         </Text>
       </Stack>
     </Container>
