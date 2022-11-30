@@ -26,14 +26,14 @@ export default function CallToActionWithIllustration() {
       return;
     }
 
-    const mintContract = "0xC5E7a7b8f66C74609E95A8f17d6677BaD41AF249";
+    const mintContract = "0x7f48395A6CFbA8285ABBdBe2fb7BEdB217654823";
 
     const transactionParameters = {
       to: mintContract,
       from: account,
       data: "0xa0712d680000000000000000000000000000000000000000000000000000000000000001",
-      value: "24000000000000", //0.05 klay 단위는 klay의 가장 작은 단위 peb, 1klay = 1,000,000,000,000,000,000 peb
-      gas: "90000", //무한 루프를 방지하기 위한 코드 실행의 최대 가스 허용량.
+      value: "24000000000000", //0.05 klay 단위는 klay의 가장 작은 단위 peb, 1klay = 1,000,000,000,000,000,000 peb 24000000000000
+      gas: "30000", //무한 루프를 방지하기 위한 코드 실행의 최대 가스 허용량.
     };
 
     window.ethereum.sendAsync(
