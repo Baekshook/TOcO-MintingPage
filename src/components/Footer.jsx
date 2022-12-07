@@ -51,13 +51,13 @@ export default function SmallWithSocial() {
           About Transparent Donation System
         </Text>
         <Stack direction={"row"} spacing={6} fontSize={"30px"}>
-          <SocialButton label={"Github"} href={"#"}>
+          <SocialButton label={"Github"} href={"https://github.com/"}>
             <FaGithub />
           </SocialButton>
-          <SocialButton label={"Twitter"} href={"#"}>
+          <SocialButton label={"Twitter"} href={"https://twitter.com/home"}>
             <FaTwitter />
           </SocialButton>
-          <SocialButton label={"Facebook"} href={"#"}>
+          <SocialButton label={"Facebook"} href={"https://discord.com/"}>
             <FaDiscord />
           </SocialButton>
         </Stack>

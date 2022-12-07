@@ -9,7 +9,8 @@ import {
   Box,
 } from "@chakra-ui/react";
 import cardImage from "@assets/card.png";
-import styled, { keyframes } from "styled-components";
+import GradientSectionTitle from "@components/GradientSectionTitle";
+
 
 export default function CallToActionWithIllustration() {
   const myAddress = window.ethereum?.selectedAddress;
@@ -32,7 +33,7 @@ export default function CallToActionWithIllustration() {
       to: mintContract,
       from: account,
       data: "0xa0712d680000000000000000000000000000000000000000000000000000000000000001",
-      value: "24000000000000", //0.05 klay 단위는 klay의 가장 작은 단위 peb, 1klay = 1,000,000,000,000,000,000 peb 24000000000000
+      value: "23870000000000", // 23870000000000
       gas: "30000", //무한 루프를 방지하기 위한 코드 실행의 최대 가스 허용량.
     };
 
@@ -71,10 +72,7 @@ export default function CallToActionWithIllustration() {
           <Text as={"span"} color={"purple.400"}>
             O{" "}
           </Text>
-          <Text as={"span"} color={"pink.400"}>
-            NFT
-          </Text>
-          {/* <GradientSectionTitle>NFT</GradientSectionTitle> */}
+          <GradientSectionTitle />
         </Heading>
         <Flex w={"full"} align={"center"} justify={"center"} pos={"relative"}>
           <Image src={cardImage} h={"300px"} />
