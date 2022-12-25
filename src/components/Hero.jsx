@@ -1,15 +1,8 @@
-import {
-  Flex,
-  Container,
-  Heading,
-  Stack,
-  Text,
-  Button,
-  Image,
-  Box,
-} from "@chakra-ui/react";
-import cardImage from "@assets/card.png";
-import GradientSectionTitle from "@components/GradientSectionTitle";
+import { Container, Stack, Text, Button } from "@chakra-ui/react";
+import { getNFTContract } from "@hooks/nftContract";
+import { useEffect, useState } from "react";
+import FlexComponenet from "./FlexComponenet";
+import HeadingComponent from "./HeadingComponent";
 
 export default function CallToActionWithIllustration() {
   const myAddress = window.ethereum?.selectedAddress;
@@ -26,7 +19,7 @@ export default function CallToActionWithIllustration() {
       return;
     }
 
-    const mintContract = "0x7f48395A6CFbA8285ABBdBe2fb7BEdB217654823";
+    const mintContract = "0xa83A1472f66E3F53738f060221Ba782A8cED7D45";
 
     const transactionParameters = {
       to: mintContract,
@@ -49,6 +42,18 @@ export default function CallToActionWithIllustration() {
     );
   };
 
+  const contract = getNFTContract();
+  const [number, setNumber] = useState();
+
+  useEffect(() => {
+    contract.methods
+      .totalSupply()
+      .call()
+      .then((a) => {
+        setNumber(50 - a); // 50은 최대 발행량
+      });
+  }, []);
+
   return (
     <Container maxW={"5xl"}>
       <Stack
@@ -57,40 +62,15 @@ export default function CallToActionWithIllustration() {
         spacing={{ base: 8, md: 10 }}
         py={{ base: 20, md: 28 }}
       >
-        <Heading
-          fontWeight={600}
-          fontSize={{ base: "3xl", sm: "4xl", md: "6xl" }}
-          lineHeight={"110%"}
-          fontFamily={"SEBANG_Gothic_Bold"}
-        >
-          T
-          <Text as={"span"} color={"purple.400"}>
-            O
-          </Text>
-          c
-          <Text as={"span"} color={"purple.400"}>
-            O{" "}
-          </Text>
-          <GradientSectionTitle />
-        </Heading>
-        <Flex w={"full"} align={"center"} justify={"center"} pos={"relative"}>
-          <Image src={cardImage} h={"300px"} />
-          <Box
-            w={"400px"}
-            h={"400px"}
-            bg={"linear-gradient(160deg, #21D4FD 0%, #B721FF 100%)"}
-            pos={"absolute"}
-            zIndex={-3}
-            filter={"blur(70px)"}
-          />
-        </Flex>
+        <HeadingComponent />
+        <FlexComponenet />
         <Text
           fontWeight={100}
           fontSize={{ base: "2xl", sm: "2xl", md: "3xl" }}
           fontFamily={"SEBANG_Gothic_Bold"}
           lineHeight={"140%"}
         >
-          47 / 50
+          {number} / 50
           <br />
           0.01 ETH each
         </Text>

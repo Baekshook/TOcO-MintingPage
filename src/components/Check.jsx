@@ -1,15 +1,16 @@
 import React from "react";
-import nftContract from "../contracts/abi/nftContract.json";
-import { nftContractAddress } from "../contracts/contract";
 import { useState, useEffect } from "react";
-
 import { getNFTContract } from "@hooks/nftContract";
 
 export default function Check() {
   const contract = getNFTContract();
+  const [number, setNumber] = useState();
 
-  const getNumber = contract.methods.totalSupply().call();
-  console.log(getNumber);
+  useEffect(() => {
+    contract.methods.totalSupply().call().then((a) => {
+      setNumber(50-a); // 50은 최대 발행량
+    })
+  }, []);
 
-  return <div>Check</div>;
+  return <div>{number}</div>;
 }

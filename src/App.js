@@ -88,17 +88,16 @@ function App() {
   }, [setUser]);
 
   return (
-    <ChakraProvider theme={theme}>
-      <Fonts />
-      <NavBar />
-      <Hero />
-      <br />
-      <br />
-      <br />
-      <br />
-      <Footer />
-      <Check></Check>
-    </ChakraProvider>
+      <ChakraProvider theme={theme}>
+        <Fonts />
+        <NavBar />
+        <Hero />
+        <br />
+        <br />
+        <br />
+        <br />
+        <Footer />
+      </ChakraProvider>
   );
 }
 
