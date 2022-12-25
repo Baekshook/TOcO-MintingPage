@@ -57,7 +57,7 @@ export default function SmallWithSocial() {
           <SocialButton label={"Twitter"} href={"https://twitter.com/home"}>
             <FaTwitter />
           </SocialButton>
-          <SocialButton label={"Facebook"} href={"https://discord.com/"}>
+          <SocialButton label={"Discord"} href={"https://discord.com/"}>
             <FaDiscord />
           </SocialButton>
         </Stack>

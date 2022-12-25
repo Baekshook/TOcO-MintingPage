@@ -11,7 +11,6 @@ import {
 import cardImage from "@assets/card.png";
 import GradientSectionTitle from "@components/GradientSectionTitle";
 
-
 export default function CallToActionWithIllustration() {
   const myAddress = window.ethereum?.selectedAddress;
 
