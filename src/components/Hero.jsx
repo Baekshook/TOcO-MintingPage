@@ -47,7 +47,7 @@ export default function CallToActionWithIllustration() {
           <br />
         </Text>
         <Stack spacing={6} direction={"row"}>
-          <Mint></Mint>
+          <Mint />
         </Stack>
         <Text lineHeight={"200%"} maxW={"3xl"} fontSize={{ base: "2xl" }}>
           max supply : 50
