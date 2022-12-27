@@ -13,8 +13,8 @@ const theme = extendTheme({
   styles: {
     global: {
       body: {
-        backgroundColor: "black",
-        color: "white",
+        bgGradient : 'linear(to-t, #fad0c4 0%, #ffd1ff 100%)',
+        color: "black",
       },
     },
   },
