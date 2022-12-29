@@ -5,9 +5,8 @@ import FlexComponenet from "./FlexComponenet";
 import HeadingComponent from "./HeadingComponent";
 import Mint from "./Mint";
 
-export default function CallToActionWithIllustration() {
+export default function Hero() {
   const myAddress = window.ethereum?.selectedAddress;
-
 
   const contract = getNFTContract();
   const [number, setNumber] = useState();
@@ -20,6 +19,15 @@ export default function CallToActionWithIllustration() {
         setNumber(50 - a); // 50은 최대 발행량
       });
   }, []);
+
+  // useEffect(() => {
+  //   contract.methods
+  //     .checkBalance()
+  //     .call()
+  //     .then((a) => {
+  //       setBalance(a); // 50은 최대 발행량
+  //     });
+  // }, []);
 
   return (
     <Container maxW={"5xl"}>
@@ -43,13 +51,19 @@ export default function CallToActionWithIllustration() {
         </Text>
         <Text fontSize={"18px"} lineHeight={"50%"} margin={"100px"}>
           Your Address : {myAddress}
-          {/* Balance : {myBalbance} */}
           <br />
+          <br />
+          {/* Your Balance : {balance} */}
         </Text>
         <Stack spacing={6} direction={"row"}>
           <Mint />
         </Stack>
-        <Text lineHeight={"200%"} maxW={"3xl"} fontSize={{ base: "2xl" }}>
+        <Text
+          lineHeight={"200%"}
+          maxW={"3xl"}
+          fontSize={"20px"}
+          fontFamily={"PyeongChangPeace-Bold"}
+        >
           max supply : 50
           <br />
           Connect to the Ethereum Mainnet

@@ -59,6 +59,7 @@ export default function Mint() {
         fontSize={{ base: "2xl", sm: "2xl", md: "2xl" }}
         fontFamily={"SEBANG_Gothic_Bold"}
         bg={"red.400"}
+        _hover={{ bg: "red.600" }}
       >
         +
       </Button>
@@ -69,6 +70,7 @@ export default function Mint() {
         fontSize={{ base: "2xl", sm: "2xl", md: "2xl" }}
         fontFamily={"SEBANG_Gothic_Bold"}
         bg={"red.400"}
+        _hover={{ bg: "red.600" }}
       >
         -
       </Button>
@@ -84,7 +86,7 @@ export default function Mint() {
         fontSize={{ base: "20px" }}
         fontFamily={"PyeongChangPeace-Bold"}
       >
-        민팅 개수 : {counter}
+        민팅 개수 : {counter} (최대 5개)
       </Text>
       <br />
       <Button

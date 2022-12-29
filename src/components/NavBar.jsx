@@ -37,9 +37,9 @@ export default function WithSubNavigation() {
       );
       setUser(accounts[0]);
       localStorage.setItem("_user", accounts[0]);
-      toast.success(`${accounts[0].slice(0, 13)}...님 환영합니다~ ^^`);
+      toast.success(`${accounts[0].slice(0, 13)}...님 환영합니다. :)`);
     } catch {
-      toast.error("로그인 실패..! 다시 시도해주세요~^^");
+      toast.error("로그인 실패. 다시 시도해주세요.");
     }
   }
 
@@ -50,11 +50,11 @@ export default function WithSubNavigation() {
   async function handleDone() {
     const isAvailable = await isMetamaskAvailable();
     if (isAvailable) {
-      toast.success("엇 ..또 로그인 하실려구요?!");
+      toast.success("이미 지갑연결이 되어있습니다.");
       return;
     }
 
-    toast.warn("다시 로그인 해주세요 ^^!");
+    toast.warn("다시 로그인 해주세요.");
     setUser("");
     localStorage.removeItem("_user");
   }

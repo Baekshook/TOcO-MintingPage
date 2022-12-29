@@ -8,7 +8,6 @@ import Fonts from "./font";
 import { toast } from "react-toastify";
 import { useEffect } from "react";
 import useAuth from "@hooks/useAuth";
-import Mint from "@components/Mint";
 
 const ethereum = window.ethereum;
 
@@ -47,7 +46,7 @@ function App() {
       const changedAccount = ethereum?.selectedAddress;
       if (user !== changedAccount) {
         toast.success(
-          `${changedAccount.slice(0, 5)}...   계정이 바뀌셨군요 ㅎㅎ!!`
+          `${changedAccount.slice(0, 5)}...로 계정이 바뀌었습니다.`
         );
         setUser(changedAccount);
         localStorage.setItem("_user", changedAccount);
@@ -77,7 +76,7 @@ function App() {
       setUser("");
       localStorage.removeItem("_user");
       toast.warn(
-        `네트워크가 ${networkObj[networkDecimal]}으로 바뀌었군요! 다시 로그인 해주세요~`
+        `네트워크가 ${networkObj[networkDecimal]}으로 바뀌었습니다. 다시 로그인 해주세요.`
       );
     };
 
