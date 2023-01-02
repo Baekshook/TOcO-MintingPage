@@ -20,14 +20,10 @@ export default function Hero() {
       });
   }, []);
 
-  // useEffect(() => {
-  //   contract.methods
-  //     .checkBalance()
-  //     .call()
-  //     .then((a) => {
-  //       setBalance(a); // 50은 최대 발행량
-  //     });
-  // }, []);
+  if ({ number } <= 0) {
+    alert("모든 물량이 소진되었습니다.");
+    return;
+  }
 
   return (
     <Container maxW={"5xl"}>

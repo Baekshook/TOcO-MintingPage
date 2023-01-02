@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useState} from "react";
 import { Button, Container, Text } from "@chakra-ui/react";
 import { getNFTContract } from "@hooks/nftContract";
 
@@ -23,7 +23,7 @@ export default function Mint() {
   }
 
   function handleReset() {
-    setCounter("0");
+    setCounter(0);
   }
 
   const onClickMintButton = async () => {
@@ -33,7 +33,7 @@ export default function Mint() {
     if (window.ethereum.networkVersion !== "5") {
       // 8217 mainnet, 1001 testnet Klaytn
       // 1 mainnet, 5 Goerli Test Network
-      alert("Warning! It is not Goerli network");
+      alert("경고! 현재 네트워크가 Goerli network가 아닙니다.");
       return;
     }
 
@@ -49,7 +49,14 @@ export default function Mint() {
         value: value,
         gas: "6500000", //무한 루프를 방지하기 위한 코드 실행의 최대 가스 허용량.
       })
-      .then(console.log);
+      .once("error", (err) => {
+        console.log(err);
+        alert("민팅에 실패하였습니다.");
+      })
+      .then((receipt) => {
+        console.log(receipt);
+        alert(`민팅에 성공하였습니다!`);
+      });
   };
 
   return (
