@@ -1,7 +1,7 @@
-import { Container, Stack, Text, Button } from "@chakra-ui/react";
+import { Container, Stack, Text} from "@chakra-ui/react";
 import { getNFTContract } from "@hooks/nftContract";
 import { useEffect, useState } from "react";
-import FlexComponenet from "./FlexComponenet";
+import FlexComponent from "./FlexComponenet";
 import HeadingComponent from "./HeadingComponent";
 import Mint from "./Mint";
 
@@ -34,7 +34,7 @@ export default function Hero() {
         py={{ base: 20, md: 28 }}
       >
         <HeadingComponent />
-        <FlexComponenet />
+        <FlexComponent />
         <Text
           fontWeight={100}
           fontSize={{ base: "2xl", sm: "2xl", md: "3xl" }}

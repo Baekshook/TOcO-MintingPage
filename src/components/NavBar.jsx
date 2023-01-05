@@ -21,7 +21,7 @@ export default function WithSubNavigation() {
   const { user, setUser } = useAuth();
   async function loginWithMetamask() {
     if (!ethereum) {
-      toast.error("kaikas 설치 해주세요!", {
+      toast.error("메타마스크 설치가 되어있지 않습니다.", {
         position: toast.POSITION.TOP_CENTER,
       });
       return;
@@ -31,7 +31,7 @@ export default function WithSubNavigation() {
       const accounts = await toast.promise(
         ethereum.enable(),
         {
-          pending: "Kaikas 지갑 연동 중",
+          pending: "MetaMask 지갑 연동 중",
         },
         { closeButton: true }
       );
@@ -66,8 +66,8 @@ export default function WithSubNavigation() {
     }
 
     const results = await Promise.all([
-      ethereum._metamask.isApproved(),
-      ethereum._metamask.isEnabled(),
+      ethereum.isMetaMask.isApproved(),
+      ethereum.isMetaMask.isEnabled(),
       ethereum._metamask.isUnlocked(),
     ]);
 
