@@ -47,7 +47,7 @@ export default function Mint() {
         from: account,
         data: "0xa0712d680000000000000000000000000000000000000000000000000000000000000001",
         value: value,
-        gas: "6500000", //무한 루프를 방지하기 위한 코드 실행의 최대 가스 허용량.
+        gas: "1000000", //무한 루프를 방지하기 위한 코드 실행의 최대 가스 허용량.
       })
       .once("error", (err) => {
         console.log(err);
