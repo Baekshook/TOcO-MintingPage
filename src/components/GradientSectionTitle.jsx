@@ -1,13 +1,13 @@
-import React from 'react'
+import React from "react";
 import styled, { keyframes } from "styled-components";
 
 const textGradient = `linear-gradient(
     90deg,
-    #66ffff,
-    #9933ff 25.52%,
-    #cc00cc 50%,
-    #4c0099 76.04%,
-    #00ffff
+    #e16838,
+    #c58ccb 25.52%,
+    #b546e1 50%,
+    #9bbbbb 76.04%,
+    #e16838
   );`;
 
 const shine = keyframes`
@@ -34,8 +34,5 @@ const GradientSectionTitles = styled.span`
 `;
 
 export default function GradientSectionTitle() {
-
-  return (
-    <GradientSectionTitles>NFT</GradientSectionTitles>
-  )
+  return <GradientSectionTitles>NFT</GradientSectionTitles>;
 }

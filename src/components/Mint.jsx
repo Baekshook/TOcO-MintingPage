@@ -1,5 +1,5 @@
 import React from "react";
-import { useState} from "react";
+import { useState } from "react";
 import { Button, Container, Text } from "@chakra-ui/react";
 import { getNFTContract } from "@hooks/nftContract";
 
