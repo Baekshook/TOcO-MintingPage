@@ -66,8 +66,8 @@ export default function WithSubNavigation() {
     }
 
     const results = await Promise.all([
-      ethereum.isMetaMask.isApproved(),
-      ethereum.isMetaMask.isEnabled(),
+      ethereum._metamask.isApproved(),
+      ethereum._metamask.isEnabled(),
       ethereum._metamask.isUnlocked(),
     ]);
 
