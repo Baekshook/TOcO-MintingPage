@@ -39,6 +39,7 @@ export default function Mint() {
 
     const mintContract = "0xa83A1472f66E3F53738f060221Ba782A8cED7D45";
     const value = 10000000000000000 * counter;
+    const gas = 200000 * counter;
 
     contract.methods
       .mint(counter)
@@ -47,7 +48,8 @@ export default function Mint() {
         from: account,
         data: "0xa0712d680000000000000000000000000000000000000000000000000000000000000001",
         value: value,
-        gas: "1000000", //무한 루프를 방지하기 위한 코드 실행의 최대 가스 허용량.
+        gas: gas, //무한 루프를 방지하기 위한 코드 실행의 최대 가스 허용량.
+        gasPrice: "5000000000"
       })
       .once("error", (err) => {
         console.log(err);
